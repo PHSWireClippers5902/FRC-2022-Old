@@ -7,8 +7,9 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Ultrasonic;
-import edu.wpi.first.wpilibj.Servo;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class RobotMap {
@@ -17,12 +18,7 @@ public class RobotMap {
     public static WPI_TalonSRX driveMainLeft = new WPI_TalonSRX(2);
     public static WPI_TalonSRX driveFollowRight = new WPI_TalonSRX(3);
     public static WPI_TalonSRX driveFollowLeft = new WPI_TalonSRX(4);
-    public static WPI_TalonSRX climbMotorLeft = new WPI_TalonSRX(5);
-    public static WPI_TalonSRX climbMotorRight = new WPI_TalonSRX(6);
-    
-    public static WPI_TalonSRX flyWheel = new WPI_TalonSRX(8);
-    
-    public static SpeedControllerGroup climbMotors = new SpeedControllerGroup(climbMotorRight, climbMotorLeft);
+
     public static DifferentialDrive diffDrive = new DifferentialDrive(driveMainLeft, driveMainRight);
     public static SpeedController lightsR;
     public static SpeedController lightsL;
@@ -35,7 +31,6 @@ public class RobotMap {
     public static Ultrasonic ultra;
 
     // SERVO THING
-    public static Servo coolServo;
 
     public static void init() {
         diffDrive.setSafetyEnabled(true);
@@ -46,12 +41,6 @@ public class RobotMap {
         driveMainRight.configOpenloopRamp(0.5);
         driveFollowLeft.configOpenloopRamp(0.5);
         driveFollowRight.configOpenloopRamp(0.5);
-        flyWheel.configOpenloopRamp(.25);
-        flyWheel.setSafetyEnabled(true);
-        climbMotorLeft.configOpenloopRamp(0);
-        climbMotorLeft.setSafetyEnabled(true);
-        climbMotorRight.configOpenloopRamp(0);
-        climbMotorRight.setSafetyEnabled(true);
 
         // Lights
         lightsR = new Spark(0);
@@ -66,7 +55,5 @@ public class RobotMap {
         backSolenoid.set(false);
         topSolenoid.set(false);
 
-        // SERVO THING
-        coolServo = new Servo(1);
     }
 }

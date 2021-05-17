@@ -17,6 +17,10 @@ public class PneumaticSystem extends Subsystem {
     RobotMap.frontSolenoid.set(true);
   }
 
+  public void toggleFrontPistons(){
+    RobotMap.frontSolenoid.toggle();
+  }
+
   public void onBackPistons() {
     RobotMap.backSolenoid.set(true);
   }

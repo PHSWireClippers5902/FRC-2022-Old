@@ -13,22 +13,28 @@ public class FrontPistonToggle extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.pneumaticSystem.offFrontPistons();
-
+    //Robot.pneumaticSystem.offFrontPistons();
+    Robot.pneumaticSystem.toggleFrontPistons();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.pneumaticSystem.onFrontPistons();
     //RobotMap.frontSolenoid.set(true);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
+
+  /*
+  @Override
+  protected void cancel(){
+    Robot.pneumaticSystem.
+  }
+*/
 
   // Called once after isFinished returns true
   @Override
