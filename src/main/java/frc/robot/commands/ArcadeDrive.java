@@ -33,7 +33,7 @@ public class ArcadeDrive extends Command {
   // Called once the command ends or is interrupted.
   @Override
   protected void end() {
-    Robot.driveTrain.stop();
+    //Robot.driveTrain.stop();
   }
 
   // Returns true when the command should end.

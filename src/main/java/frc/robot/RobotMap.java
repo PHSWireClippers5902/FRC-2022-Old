@@ -19,7 +19,7 @@ public class RobotMap {
     public static WPI_TalonSRX driveFollowRight = new WPI_TalonSRX(3);
     public static WPI_TalonSRX driveFollowLeft = new WPI_TalonSRX(4);
 
-    public static DifferentialDrive diffDrive = new DifferentialDrive(driveMainLeft, driveMainRight);
+    //public static DifferentialDrive diffDrive = new DifferentialDrive(driveMainLeft, driveMainRight);
     public static SpeedController lightsR;
     public static SpeedController lightsL;
     // Pneumatics
@@ -33,10 +33,10 @@ public class RobotMap {
     // SERVO THING
 
     public static void init() {
-        diffDrive.setSafetyEnabled(true);
-        diffDrive.setExpiration(0.1);
-        diffDrive.setMaxOutput(1.0);
-        diffDrive.setDeadband(0.2);
+        //diffDrive.setSafetyEnabled(true);
+        //diffDrive.setExpiration(0.1);
+        //diffDrive.setMaxOutput(1.0);
+        //diffDrive.setDeadband(0.2);
         driveMainLeft.configOpenloopRamp(0.5);
         driveMainRight.configOpenloopRamp(0.5);
         driveFollowLeft.configOpenloopRamp(0.5);

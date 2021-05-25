@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.subsystems.*;
 import frc.robot.RobotMap;
 import frc.robot.commands.TopPistonToggle;
@@ -34,6 +35,7 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static DriveTrain driveTrain;
+  public static MecanumSystem mecanumSystem;
   public static LightSystem lightSystem;
   public static PneumaticSystem pneumaticSystem;
   private double startTime;
@@ -51,6 +53,7 @@ public class Robot extends TimedRobot {
     pneumaticSystem = new PneumaticSystem();
     driveTrain = new DriveTrain();
     lightSystem = new LightSystem();
+    mecanumSystem = new MecanumSystem();
     oi = new OI();
 
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
@@ -131,7 +134,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run(); 
-    driveTrain.driveWithXbox();
+    //driveTrain.driveWithXbox();
+    mecanumSystem.driveWithMecanum();
     
    // RobotMap.topSolenoid.set(false);
     //RobotMap.frontSolenoid.set(false);

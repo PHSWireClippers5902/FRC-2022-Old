@@ -25,11 +25,12 @@ public class DriveTrain extends Subsystem {
   @Override
   protected void initDefaultCommand() {
     // Setting motor control followers
-    RobotMap.driveFollowLeft.follow(RobotMap.driveMainLeft);
-    RobotMap.driveFollowRight.follow(RobotMap.driveMainRight);
+    //RobotMap.driveFollowLeft.follow(RobotMap.driveMainLeft);
+    //RobotMap.driveFollowRight.follow(RobotMap.driveMainRight);
     //setDefaultCommand(new ArcadeDrive());
   }
 
+  /*
   public void arcadeDrive(double stickY_Axis, double stickX_Axis, double speed) {
     RobotMap.diffDrive.arcadeDrive(stickY_Axis * speed, stickX_Axis * speed);
   }
@@ -42,6 +43,7 @@ public class DriveTrain extends Subsystem {
   public void stop() {
     RobotMap.diffDrive.tankDrive(0, 0);
   }
+*/
 
   public void driveWithXbox() {
     if (Robot.oi.getXbox() == null) {
@@ -63,7 +65,7 @@ public class DriveTrain extends Subsystem {
     // System.out.println("Right Trigger:" + rightTriggerValue);
      
     if (rightTriggerValue > 0 && leftTriggerValue > 0) {
-      arcadeDrive(0, 0, 0);
+      //arcadeDrive(0, 0, 0);
 
     } else if (rightTriggerValue > 0) {
 
@@ -76,7 +78,7 @@ public class DriveTrain extends Subsystem {
     }
 
     //System.out.println("StickX: " + stickX + ", StickY: " + stickY);
-    arcadeDrive(stickY, stickX, driveSpeed); 
+    //arcadeDrive(stickY, stickX, driveSpeed); 
 
   }
 
