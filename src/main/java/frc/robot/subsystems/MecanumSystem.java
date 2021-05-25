@@ -43,15 +43,15 @@ public class MecanumSystem extends Subsystem {
             RobotMap.driveMainLeft.set((rightTriggerValue-leftStickXValue)/2);
             */
             double forward = rightTriggerValue * 0.5;
-            RobotMap.driveMainRight.set(-forward);
-            RobotMap.driveMainLeft.set(forward);
-            RobotMap.driveFollowRight.set(-forward);
-            RobotMap.driveFollowLeft.set(forward);
+            RobotMap.frontRightWheel.set(-forward);
+            RobotMap.backRightWheel.set(-forward);
+            RobotMap.frontLeftWheel.set(forward);
+            RobotMap.backLeftWheel.set(forward);
         } else{
-            RobotMap.driveMainRight.set(0);
-            RobotMap.driveMainLeft.set(0);
-            RobotMap.driveFollowRight.set(0);
-            RobotMap.driveFollowLeft.set(0);  
+            RobotMap.frontRightWheel.set(0);
+            RobotMap.frontLeftWheel.set(0);
+            RobotMap.backRightWheel.set(0);
+            RobotMap.backLeftWheel.set(0);  
         }
 
             /*
