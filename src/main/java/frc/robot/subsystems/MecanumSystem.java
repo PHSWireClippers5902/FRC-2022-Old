@@ -35,18 +35,27 @@ public class MecanumSystem extends Subsystem {
         //double leftStickYValue = Robot.oi.getXbox().getY(Hand.kLeft);
         double RightStickXValue = Robot.oi.getXbox().getX(Hand.kRight);
 
-        if (Math.abs(rightTriggerValue) > threshold || Math.abs(leftStickXValue) > threshold ){
-            /*
-            RobotMap.driveMainRight.set((rightTriggerValue-leftStickXValue)/2);
-            RobotMap.driveMainLeft.set((rightTriggerValue-leftStickXValue)/2);
-            RobotMap.driveFollowRight.set((rightTriggerValue-leftStickXValue)/2);
-            RobotMap.driveMainLeft.set((rightTriggerValue-leftStickXValue)/2);
-            */
-            double forward = rightTriggerValue * 0.5;
-            RobotMap.driveMainRight.set(-forward);
-            RobotMap.driveMainLeft.set(forward);
-            RobotMap.driveFollowRight.set(-forward);
-            RobotMap.driveFollowLeft.set(forward);
+        double forward = rightTriggerValue * 0.5;
+        double x = leftStickXValue;
+        double sideSpeed = 0.5;
+
+        if (Math.abs(rightTriggerValue) > threshold || Math.abs(leftStickXValue) > threshold || Math.abs(RightStickXValue) > threshold ){
+            if (Math.abs(rightTriggerValue) > threshold || Math.abs(leftStickXValue) > threshold){
+                RobotMap.driveMainRight.set(-(forward-x));
+                RobotMap.driveMainLeft.set(forward+x);
+                RobotMap.driveFollowRight.set(-(forward-x));
+                RobotMap.driveFollowLeft.set(forward+x);
+            }if (RightStickXValue > threshold){
+                RobotMap.driveMainRight.set(sideSpeed);
+                RobotMap.driveMainLeft.set(sideSpeed);
+                RobotMap.driveFollowRight.set(-sideSpeed);
+                RobotMap.driveFollowLeft.set(-sideSpeed); 
+            } if (RightStickXValue < -threshold){
+                RobotMap.driveMainRight.set(-sideSpeed);
+                RobotMap.driveMainLeft.set(-sideSpeed);
+                RobotMap.driveFollowRight.set(sideSpeed);
+                RobotMap.driveFollowLeft.set(sideSpeed);
+            }
         } else{
             RobotMap.driveMainRight.set(0);
             RobotMap.driveMainLeft.set(0);
@@ -54,14 +63,7 @@ public class MecanumSystem extends Subsystem {
             RobotMap.driveFollowLeft.set(0);  
         }
 
-            /*
-        if (Math.abs(RightStickXValue) > threshold){
-            RobotMap.driveMainRight.set(RightStickXValue/2);
-            RobotMap.driveMainLeft.set(RightStickXValue/2);
-            RobotMap.driveFollowRight.set(RightStickXValue/2);
-            RobotMap.driveMainLeft.set(leftStickXValue/2);
-        }
-        */
+        
 
         System.out.println("StickX " + leftStickXValue + "StickY " + rightTriggerValue);
     }
