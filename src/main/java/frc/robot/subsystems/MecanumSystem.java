@@ -41,26 +41,26 @@ public class MecanumSystem extends Subsystem {
 
         if (Math.abs(rightTriggerValue) > threshold || Math.abs(leftStickXValue) > threshold || Math.abs(RightStickXValue) > threshold ){
             if (Math.abs(rightTriggerValue) > threshold || Math.abs(leftStickXValue) > threshold){
-                RobotMap.driveMainRight.set(-(forward-x));
-                RobotMap.driveMainLeft.set(forward+x);
-                RobotMap.driveFollowRight.set(-(forward-x));
-                RobotMap.driveFollowLeft.set(forward+x);
+                RobotMap.frontRightWheel.set(-(forward-x));
+                RobotMap.frontLeftWheel.set(forward+x);
+                RobotMap.backRightWheel.set(-(forward-x));
+                RobotMap.backLeftWheel.set(forward+x);
             }if (RightStickXValue > threshold){
-                RobotMap.driveMainRight.set(sideSpeed);
-                RobotMap.driveMainLeft.set(sideSpeed);
-                RobotMap.driveFollowRight.set(-sideSpeed);
-                RobotMap.driveFollowLeft.set(-sideSpeed); 
+                RobotMap.frontRightWheel.set(sideSpeed);
+                RobotMap.frontLeftWheel.set(sideSpeed);
+                RobotMap.backRightWheel.set(-sideSpeed);
+                RobotMap.backLeftWheel.set(-sideSpeed); 
             } if (RightStickXValue < -threshold){
-                RobotMap.driveMainRight.set(-sideSpeed);
-                RobotMap.driveMainLeft.set(-sideSpeed);
-                RobotMap.driveFollowRight.set(sideSpeed);
-                RobotMap.driveFollowLeft.set(sideSpeed);
+                RobotMap.frontRightWheel.set(-sideSpeed);
+                RobotMap.frontLeftWheel.set(-sideSpeed);
+                RobotMap.backRightWheel.set(sideSpeed);
+                RobotMap.backLeftWheel.set(sideSpeed);
             }
         } else{
-            RobotMap.driveMainRight.set(0);
-            RobotMap.driveMainLeft.set(0);
-            RobotMap.driveFollowRight.set(0);
-            RobotMap.driveFollowLeft.set(0);  
+            RobotMap.frontRightWheel.set(0);
+            RobotMap.frontLeftWheel.set(0);
+            RobotMap.backRightWheel.set(0);
+            RobotMap.backLeftWheel.set(0);  
         }
 
         

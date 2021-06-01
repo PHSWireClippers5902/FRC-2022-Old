@@ -14,10 +14,10 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class RobotMap {
 
-    public static WPI_TalonSRX driveMainRight = new WPI_TalonSRX(1);
-    public static WPI_TalonSRX driveMainLeft = new WPI_TalonSRX(2);
-    public static WPI_TalonSRX driveFollowRight = new WPI_TalonSRX(3);
-    public static WPI_TalonSRX driveFollowLeft = new WPI_TalonSRX(4);
+    public static WPI_TalonSRX frontRightWheel = new WPI_TalonSRX(1);
+    public static WPI_TalonSRX frontLeftWheel = new WPI_TalonSRX(2);
+    public static WPI_TalonSRX backRightWheel = new WPI_TalonSRX(3);
+    public static WPI_TalonSRX backLeftWheel = new WPI_TalonSRX(4);
 
     //public static DifferentialDrive diffDrive = new DifferentialDrive(driveMainLeft, driveMainRight);
     public static SpeedController lightsR;
@@ -37,10 +37,10 @@ public class RobotMap {
         //diffDrive.setExpiration(0.1);
         //diffDrive.setMaxOutput(1.0);
         //diffDrive.setDeadband(0.2);
-        driveMainLeft.configOpenloopRamp(0.5);
-        driveMainRight.configOpenloopRamp(0.5);
-        driveFollowLeft.configOpenloopRamp(0.5);
-        driveFollowRight.configOpenloopRamp(0.5);
+        frontLeftWheel.configOpenloopRamp(0.5);
+        frontRightWheel.configOpenloopRamp(0.5);
+        backLeftWheel.configOpenloopRamp(0.5);
+        backRightWheel.configOpenloopRamp(0.5);
 
         // Lights
         lightsR = new Spark(0);
