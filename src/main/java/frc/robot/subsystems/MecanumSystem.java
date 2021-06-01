@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.RobotMap;
+import frc.robot.commands.*;
 
 
 import frc.robot.Robot;
@@ -23,19 +24,29 @@ public class MecanumSystem extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-
+        setDefaultCommand(new MecanumStop());    
     }
+
+    public void MecanumAllStop(){
+        RobotMap.frontRightWheel.set(0);
+        RobotMap.frontLeftWheel.set(0);
+        RobotMap.backRightWheel.set(0);
+        RobotMap.backLeftWheel.set(0); 
+    }
+
 
     private double threshold = 0.2;
 
     public void driveWithMecanum(){
 
         double rightTriggerValue = Robot.oi.getXbox().getTriggerAxis(Hand.kRight);
+        double leftTriggerValue = Robot.oi.getXbox().getTriggerAxis(Hand.kLeft);
         double leftStickXValue = Robot.oi.getXbox().getX(Hand.kLeft);
         //double leftStickYValue = Robot.oi.getXbox().getY(Hand.kLeft);
         double RightStickXValue = Robot.oi.getXbox().getX(Hand.kRight);
 
         double forward = rightTriggerValue * 0.5;
+        double backward = leftTriggerValue * -0.5;
         double x = leftStickXValue;
         double sideSpeed = 0.5;
 
@@ -56,11 +67,8 @@ public class MecanumSystem extends Subsystem {
                 RobotMap.backRightWheel.set(sideSpeed);
                 RobotMap.backLeftWheel.set(sideSpeed);
             }
-        } else{
-            RobotMap.frontRightWheel.set(0);
-            RobotMap.frontLeftWheel.set(0);
-            RobotMap.backRightWheel.set(0);
-            RobotMap.backLeftWheel.set(0);  
+        }else{
+             
         }
 
         
