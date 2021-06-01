@@ -23,15 +23,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 public class MecanumSystem extends Subsystem {
 
     @Override
-    protected void initDefaultCommand() {
-        setDefaultCommand(new MecanumStop());    
-    }
-
-    public void MecanumAllStop(){
-        RobotMap.frontRightWheel.set(0);
-        RobotMap.frontLeftWheel.set(0);
-        RobotMap.backRightWheel.set(0);
-        RobotMap.backLeftWheel.set(0); 
+    protected void initDefaultCommand() {    
     }
 
 
@@ -68,7 +60,10 @@ public class MecanumSystem extends Subsystem {
                 RobotMap.backLeftWheel.set(sideSpeed);
             }
         }else{
-             
+            RobotMap.frontRightWheel.set(0);
+            RobotMap.frontLeftWheel.set(0);
+            RobotMap.backRightWheel.set(0);
+            RobotMap.backLeftWheel.set(0);
         }
 
         
