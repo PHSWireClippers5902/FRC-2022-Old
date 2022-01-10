@@ -12,10 +12,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.AllPistonsOff;
 import frc.robot.commands.BackPistonToggle;
-import frc.robot.commands.ActivateClimb;
 import frc.robot.commands.FrontPistonToggle;
 import frc.robot.commands.TopPistonToggle;
-import frc.robot.commands.ServoToggle;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
@@ -91,23 +89,7 @@ public class OI {
     logitechRightBumper.toggleWhenPressed(new FrontPistonToggle());
     logitechLeftBumper.toggleWhenPressed(new BackPistonToggle());
     logitechButtonX.toggleWhenPressed(new TopPistonToggle());
-    logitechRightStickPush.whenPressed(new AllPistonsOff());
-    
-
-    // Climb Up
-    logitechButtonY.whenPressed(new ActivateClimb(-.95));
-    logitechButtonY.whenReleased(new ActivateClimb(0)); // Once stop Pneumatic is fired value has to be set to zero
-    logitechButtonB.whenPressed(new ActivateClimb(-.6));
-    logitechButtonB.whenReleased(new ActivateClimb(0));
-
-    // Climb Down
-    logitechButtonA.whenPressed(new ActivateClimb(0.8));
-    logitechButtonA.whenReleased(new ActivateClimb(0)); // Once stop Pneumatic is fired value has to be set to zero
-
-    // Servos
-    xboxButtonA.whenPressed(new ServoToggle(180));//down
-    xboxButtonY.whenPressed(new ServoToggle(18));//up
-
+    logitechRightStickPush.whenPressed(new AllPistonsOff());  
 
   }
 

@@ -22,7 +22,6 @@ public class BackPistonToggle extends Command {
   @Override
   protected void execute() {
     Robot.pneumaticSystem.onBackPistons();
-
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -34,6 +33,7 @@ public class BackPistonToggle extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.pneumaticSystem.offBackPistons();
   }
 
 
