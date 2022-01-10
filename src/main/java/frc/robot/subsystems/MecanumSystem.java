@@ -27,7 +27,7 @@ public class MecanumSystem extends Subsystem {
     }
 
 
-    private double threshold = 0.2;
+    private double threshold = 0.1;
 
     public void driveWithMecanum(){
 
@@ -38,26 +38,38 @@ public class MecanumSystem extends Subsystem {
         double RightStickXValue = Robot.oi.getXbox().getX(Hand.kRight);
 
         double forward = rightTriggerValue * 0.5;
-        double backward = leftTriggerValue * -0.5;
+        double backward = leftTriggerValue * 0.5;
         double x = leftStickXValue;
         double sideSpeed = 0.5;
 
-        if (Math.abs(rightTriggerValue) > threshold || Math.abs(leftStickXValue) > threshold || Math.abs(RightStickXValue) > threshold ){
-            if (Math.abs(rightTriggerValue) > threshold || Math.abs(leftStickXValue) > threshold){
+        if (Math.abs(rightTriggerValue) > threshold || Math.abs(leftStickXValue) > threshold || Math.abs(RightStickXValue) > threshold || Math.abs(leftTriggerValue) > threshold){
+            if (Math.abs(rightTriggerValue) > threshold){
                 RobotMap.frontRightWheel.set(-(forward-x));
                 RobotMap.frontLeftWheel.set(forward+x);
                 RobotMap.backRightWheel.set(-(forward-x));
                 RobotMap.backLeftWheel.set(forward+x);
-            }if (RightStickXValue > threshold){
+            }
+            else if (RightStickXValue > threshold){
                 RobotMap.frontRightWheel.set(sideSpeed);
                 RobotMap.frontLeftWheel.set(sideSpeed);
                 RobotMap.backRightWheel.set(-sideSpeed);
                 RobotMap.backLeftWheel.set(-sideSpeed); 
-            } if (RightStickXValue < -threshold){
+            }else if (RightStickXValue < -threshold){
                 RobotMap.frontRightWheel.set(-sideSpeed);
                 RobotMap.frontLeftWheel.set(-sideSpeed);
                 RobotMap.backRightWheel.set(sideSpeed);
                 RobotMap.backLeftWheel.set(sideSpeed);
+            }else if (Math.abs(leftTriggerValue) > threshold){
+                RobotMap.frontRightWheel.set((backward+x));
+                RobotMap.frontLeftWheel.set(-(backward-x));
+                RobotMap.backRightWheel.set((backward+x));
+                RobotMap.backLeftWheel.set(-(backward-x));
+            }
+            else if (Math.abs(leftStickXValue) > threshold){
+                RobotMap.frontRightWheel.set(-(forward-x));
+                RobotMap.frontLeftWheel.set(forward+x);
+                RobotMap.backRightWheel.set(-(forward-x));
+                RobotMap.backLeftWheel.set(forward+x);
             }
         }else{
             RobotMap.frontRightWheel.set(0);
