@@ -47,13 +47,13 @@ public class RobotMap {
         lightsL = new Spark(3);
 
         // Create pneumaticSystem
-        compressor = new Compressor(20);
+        compressor = new Compressor(0);
         frontSolenoid = new SolenoidWrapper(20, 1);
         backSolenoid = new SolenoidWrapper(20, 0);
         topSolenoid = new SolenoidWrapper(20, 2);
-        frontSolenoid.set(false);
-        backSolenoid.set(false);
-        topSolenoid.set(false);
+        // frontSolenoid.set(false);
+        // backSolenoid.set(true);
+        // topSolenoid.set(false);
 
     }
 }
