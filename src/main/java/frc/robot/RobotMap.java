@@ -18,6 +18,7 @@ public class RobotMap {
     public static WPI_TalonSRX frontLeftWheel = new WPI_TalonSRX(2);
     public static WPI_TalonSRX backRightWheel = new WPI_TalonSRX(3);
     public static WPI_TalonSRX backLeftWheel = new WPI_TalonSRX(4);
+    public static WPI_TalonSRX testMotor = new WPI_TalonSRX(5);
 
     //public static DifferentialDrive diffDrive = new DifferentialDrive(driveMainLeft, driveMainRight);
     public static SpeedController lightsR;

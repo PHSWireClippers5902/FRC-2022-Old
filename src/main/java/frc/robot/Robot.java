@@ -38,6 +38,7 @@ public class Robot extends TimedRobot {
   public static MecanumSystem mecanumSystem;
   public static LightSystem lightSystem;
   public static PneumaticSystem pneumaticSystem;
+  public static Test2 testSystem;
   private double startTime;
   public static boolean retractOnDisabled;
   public static boolean disabled;
@@ -54,6 +55,8 @@ public class Robot extends TimedRobot {
     driveTrain = new DriveTrain();
     lightSystem = new LightSystem();
     mecanumSystem = new MecanumSystem();
+    testSystem = new Test2();
+
     oi = new OI();
 
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
@@ -124,7 +127,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     Robot.lightSystem.getAllianceColor();
-    RobotMap.compressor.start();
+    RobotMap.compressor.stop();
+    //RobotMap.testMotor.set(.5);
     //RobotMap.coolServo.setPosition(0);  // set position .5 is 90 degrees 
   }
 

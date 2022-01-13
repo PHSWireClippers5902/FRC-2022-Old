@@ -14,7 +14,8 @@ import frc.robot.commands.AllPistonsOff;
 import frc.robot.commands.BackPistonToggle;
 import frc.robot.commands.FrontPistonToggle;
 import frc.robot.commands.TopPistonToggle;
-
+import frc.robot.commands.goEvenFaster;
+import frc.robot.subsystems.Test2;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 public class OI {
@@ -83,7 +84,8 @@ public class OI {
      * JoystickButton(logitech, 1); logitechDPadLeft = new JoystickButton(logitech,
      * 1); logitechDPadRight = new JoystickButton(logitech, 1);
      */
-    
+    //fAST
+    xboxButtonB.whenPressed(new goEvenFaster());
 
     // Pistons
     logitechRightBumper.toggleWhenPressed(new FrontPistonToggle());
