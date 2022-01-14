@@ -12,14 +12,12 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.subsystems.*;
 import frc.robot.RobotMap;
-import frc.robot.commands.TopPistonToggle;
 
-import frc.robot.subsystems.PneumaticSystem;
 import edu.wpi.first.wpilibj.Timer;
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,10 +32,8 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  public static DriveTrain driveTrain;
   public static MecanumSystem mecanumSystem;
   public static LightSystem lightSystem;
-  public static PneumaticSystem pneumaticSystem;
   private double startTime;
   public static boolean retractOnDisabled;
   public static boolean disabled;
@@ -50,8 +46,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     
     disabled = false;
-    pneumaticSystem = new PneumaticSystem();
-    driveTrain = new DriveTrain();
     lightSystem = new LightSystem();
     mecanumSystem = new MecanumSystem();
     oi = new OI();
@@ -61,10 +55,6 @@ public class Robot extends TimedRobot {
     //SmartDashboard.putData("Auto choices", m_chooser);
     System.out.println("Robot Init - NOW");
     RobotMap.init();
-    RobotMap.topSolenoid.set(false);
-    RobotMap.frontSolenoid.set(false);
-    RobotMap.backSolenoid.set(false);
-    
   }
 
   /**
@@ -81,14 +71,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-
-    
-    
-    SmartDashboard.putBoolean("Front Pistons", RobotMap.frontSolenoid.get());
-    SmartDashboard.putBoolean("Back Pistons", RobotMap.backSolenoid.get());
-    SmartDashboard.putBoolean("Top Pistons", RobotMap.topSolenoid.get());
-    SmartDashboard.putBoolean("PSI Switch", RobotMap.compressor.getPressureSwitchValue()); 
-    SmartDashboard.putBoolean("ballHatch", true );
+      CommandScheduler.getInstance().run();
   }
 
   /**
@@ -109,7 +92,6 @@ public class Robot extends TimedRobot {
     System.out.println("Auto selected: " + m_autoSelected);
     Robot.lightSystem.getAllianceColor();
     startTime = Timer.getFPGATimestamp();
-    RobotMap.compressor.start();
     Robot.lightSystem.getAllianceColor();
   }
 
@@ -124,8 +106,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     Robot.lightSystem.getAllianceColor();
-    RobotMap.compressor.start();
-    //RobotMap.coolServo.setPosition(0);  // set position .5 is 90 degrees 
   }
 
   /**
@@ -133,7 +113,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    Scheduler.getInstance().run(); 
     //driveTrain.driveWithXbox();
     mecanumSystem.driveWithMecanum();
     
@@ -153,7 +132,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledInit(){
-    retractOnDisabled = !RobotMap.topSolenoid.get();
     disabled = true;
     //System.out.println("disableInit retract " + retractOnDisabled);
   }

@@ -1,13 +1,13 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.DriverStation;
 import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
-public class LightSystem extends Subsystem {
+public class LightSystem extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   // public final SpeedController color = RobotMap.lights;
@@ -170,11 +170,5 @@ public class LightSystem extends Subsystem {
    * break; case 85: Color = "Blue"; break; case 61: Color = "Red"; break;} return
    * Color; }
    */
-
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
 
 }

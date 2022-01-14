@@ -10,10 +10,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.commands.AllPistonsOff;
-import frc.robot.commands.BackPistonToggle;
-import frc.robot.commands.FrontPistonToggle;
-import frc.robot.commands.TopPistonToggle;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
@@ -83,14 +79,6 @@ public class OI {
      * JoystickButton(logitech, 1); logitechDPadLeft = new JoystickButton(logitech,
      * 1); logitechDPadRight = new JoystickButton(logitech, 1);
      */
-    
-
-    // Pistons
-    logitechRightBumper.toggleWhenPressed(new FrontPistonToggle());
-    logitechLeftBumper.toggleWhenPressed(new BackPistonToggle());
-    logitechButtonX.toggleWhenPressed(new TopPistonToggle());
-    logitechRightStickPush.whenPressed(new AllPistonsOff());  
-
   }
 
   public double[] getStickValues(Hand hand) {

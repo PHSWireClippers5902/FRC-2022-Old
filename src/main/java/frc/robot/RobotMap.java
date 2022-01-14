@@ -3,9 +3,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
@@ -22,11 +19,7 @@ public class RobotMap {
     //public static DifferentialDrive diffDrive = new DifferentialDrive(driveMainLeft, driveMainRight);
     public static SpeedController lightsR;
     public static SpeedController lightsL;
-    // Pneumatics
-    public static Compressor compressor;
-    public static Solenoid frontSolenoid;
-    public static Solenoid backSolenoid;
-    public static Solenoid topSolenoid;
+
 
     public static Ultrasonic ultra;
 
@@ -45,15 +38,5 @@ public class RobotMap {
         // Lights
         lightsR = new Spark(0);
         lightsL = new Spark(3);
-
-        // Create pneumaticSystem
-        compressor = new Compressor(0);
-        frontSolenoid = new SolenoidWrapper(20, 1);
-        backSolenoid = new SolenoidWrapper(20, 0);
-        topSolenoid = new SolenoidWrapper(20, 2);
-        // frontSolenoid.set(false);
-        // backSolenoid.set(true);
-        // topSolenoid.set(false);
-
     }
 }

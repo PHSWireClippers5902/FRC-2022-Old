@@ -11,21 +11,14 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.RobotMap;
-import frc.robot.commands.*;
-
 
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
-public class MecanumSystem extends Subsystem {
-
-    @Override
-    protected void initDefaultCommand() {    
-    }
-
+public class MecanumSystem extends SubsystemBase {
 
     private double threshold = 0.1;
 
